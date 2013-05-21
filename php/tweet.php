@@ -4,9 +4,8 @@
 	
 function update_db($g_temp,$e_temp)
 {
+	global $conn;
 	try {
-		$conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ', ' . DB_USER . ', ' . DB_PASSWORD);
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	  	$stmt = $conn->prepare('INSERT INTO thermog_readings (g_intread,g_extread) VALUES(:g_temp,:e_temp)');
 	  	$stmt->bindParam(':g_temp', $g_temp);
 		$stmt->bindParam(':e_temp', $e_temp);
@@ -27,6 +26,7 @@ function getConnectionWithAccessToken($oauth_token, $oauth_token_secret) {
 session_start();
 require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
+require_once('db_conn.php');
 
 $temp = (isset($_GET["tmp"]) && is_numeric($_GET["tmp"])) ? $_GET["tmp"] : false;
 $secretcode = (isset($_GET["scrt"])) ? $_GET["scrt"]== G_SHARED_SECRET : false;

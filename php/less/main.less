@@ -1,0 +1,178 @@
+@font-face {
+    font-family: 'DancingScriptOTRegular';
+    src: url('../font/DancingScript-Regular-webfont.woff') format('woff'),
+         url('../font/DancingScript-Regular-webfont.ttf') format('truetype'),
+         url('../font/DancingScript-Regular-webfont.svg#DancingScriptOTRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('../font/bebasneue/bebasneue-webfont.woff') format('woff'),
+         url('../font/bebasneue/bebasneue-webfont.ttf') format('truetype'),
+         url('../font/bebasneue/bebasneue-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body
+{
+	font-family: BebasRegular;
+	font-size: 24px;
+	background:url(../img/pink-bg.png) #ff6a87 repeat-x;
+	-webkit-background-size: 76px 468px;
+	margin: 0;
+	color: white;
+	font-weight: normal;
+	text-rendering: optimizeLegibility;
+}
+
+#container
+{
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#top
+{
+	height: 148px;
+}
+
+h1
+{
+	text-shadow: rgba(0,0,0,0.5) 2px 2px 3px;
+	font-weight: normal;
+	margin: 0 auto;
+	width: 180px;
+	span
+	{
+		display: block;
+	}
+
+	.line1
+	{
+		font-family: DancingScriptOTRegular;
+		font-size: 75px;
+	}
+
+	.line2
+	{
+		font-size: 40px;
+		margin-top: -10px;
+	}
+}
+
+h2
+{
+	font-size: 30px;
+	background: url(../img/header2-bg.png);
+	background-size: 10px 41px;
+	height: 37px;
+	padding-top: 4px;
+	padding-left: 30px;
+	color: #513060;
+	text-shadow: 0px 1px 0 white;
+	margin: 8px 0 0 -15px;
+	font-weight: normal;
+}
+
+.inside,
+.outside
+{
+	padding: 0 15px;
+	position: relative;
+}
+
+.outside
+{
+	text-shadow: 2px 2px  0 #c74247;
+}
+
+.last-temp
+{
+	margin-left: 15px;
+	.temp
+	{
+		font-size: 170px;
+		display: block;
+		position: relative;
+		text-shadow: 4px 4px  0 #c74247;
+		margin-top: -5px;
+		width: 180px;
+		text-indent: -5px;
+
+	}
+
+	small
+	{
+		font-size: 50px;
+	}
+	
+	.degree
+	{
+		position: absolute;
+		top: 12px;
+		right: 0;
+		font-size: 110px;
+	}
+
+	time
+	{
+		display: block;
+		text-shadow: 2px 2px  0 #c74247;
+	}	
+}
+
+#difference
+{
+	position: absolute;
+	right: 10px;
+	top: 60px;
+	height: 82px;
+	width: 82px;
+	background-image: url(../img/circle.png);
+	background-size: 82px 82px;
+
+	.arrow
+	{
+		background-image: url(../img/arrow.png);
+		background-size: 43px 112px;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 43px;
+		height: 47px;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+
+	&.down .arrow
+	{
+		background-position: 0 -65px;
+	}
+}
+
+#latest-timestamp
+{
+	font-size: 30px;
+	margin-top: -10px;
+	color: #feebef;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

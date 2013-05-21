@@ -3,8 +3,11 @@
 ini_set('display_errors', 1); 
 error_reporting(E_ALL);
 
+include_once("db_conn.php");
+
 function query_db($start_date="", $end_date="")
 {
+	global $conn;
 	try { 
 		$tmp = 0;
 		
@@ -29,10 +32,9 @@ function query_db($start_date="", $end_date="")
 		}
 		
 		
-	//	print_r ($sql);
+		//print_r ($sql);
 	   
-		$conn = new PDO('mysql:host=mysql1576int.cp.blacknight.com;dbname=db1185075_7465vfj678', "u1185075_hjfb34", "epda761*ef");
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
 	  	$stmt = $conn->prepare($sql);
 		if ($tmp == 0 || $tmp == 2)
 		{
