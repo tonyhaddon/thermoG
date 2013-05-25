@@ -21,31 +21,48 @@
 <!--        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
     </head>
     <body>
-        <div class="container-fluid">
-            <hgroup>
+        <div id="container">
+            <hgroup id="top">
                 <h1>
                     <span class="line1">Greta's</span> <span class="line2">Thermometer</span>
                 </h1>
             </hgroup>
 
         	<section class="last-temp">
-        		<h2>Right Now</h2>
-        		<p class="inside"><span class="temp">23.23°</span>
-        			<time>20:35:23 12 Jan 2013</time></p>
-        		<p class="outside">
-        			Outside, it's 8°.
-        		</p>
+        		<h2>The Latest</h2>
+        		<div class="inside">
+                    <span class="temp" id="latest-int-temp"></span>
+        			<time id="latest-timestamp"></time>
+                    <div id="difference">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+                
+        		<div class="outside">
+        			Outside, it's <span id="latest-ext-temp"></span>°.
+        		</div>
+
+
         		
         	</section>
 
 		</div> <!-- /container --> <!-- /container -->
 
-       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>-->
+       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
   <!--      <script src="js/vendor/bootstrap.min.js"></script>
 		<script src="http://d3js.org/d3.v3.js"></script> -->
-	<!--	<script src="js/line-chart.js"></script>
-        <script src="js/main.js"></script> -->
+	<!--	<script src="js/line-chart.js"></script>-->
+        <script>
+            var theData;    //  A container for the last week's worth of data
+        </script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
+<?php
+//	Close the connection
+$conn = null;
+
+?>

@@ -1,8 +1,8 @@
 
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 320 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
@@ -28,13 +28,13 @@ var extLine = d3.svg.line()
     .x(function(d) { return x(d.g_datetime); })
 	.y(function(d) { return y(d.g_extread) });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".six-hour-chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("get_json.php", function(error, data) {
+  var data = theData;
   data.forEach(function(d) {
     d.g_datetime = parseDate(d.g_datetime);
     d.g_intread = +d.g_intread;
@@ -90,4 +90,3 @@ y.domain([-10,30]);
       .datum(data)
       .attr("class", "line2")
       .attr("d", extLine);
-});

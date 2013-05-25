@@ -1,12 +1,12 @@
-var theData;	//	A container for the last week's worth of data
+var theData;    //  A container for the last week's worth of data
 
 var placeholders = {
-	'latestIntTemp' : $('#latest-int-temp'),
-	'latestExtTemp' : $('#latest-ext-temp'),
-	'latestTimeStamp' : $('#latest-timestamp'),
-	'lowestIntTemp'	: $('#lowest-int-temp'),
-	'highestIntTemp' : $('#highest-int-temp'),
-	'tempDiff' : $('#difference')
+	'latestIntTemp'		: $('#latest-int-temp'),
+	'latestExtTemp' 	: $('#latest-ext-temp'),
+	'latestTimeStamp' 	: $('#latest-timestamp'),
+	'lowestIntTemp'		: $('#lowest-int-temp'),
+	'highestIntTemp' 	: $('#highest-int-temp'),
+	'tempDiff'			: $('#difference')
 }
 
 function getWeeksData()
@@ -60,29 +60,27 @@ function formatPrettyDate(dt)	// to 23:45, 1 Jan 2013
 	dt = giveSafariaHand(dt);
 	dt = new Date(dt[0][0],dt[0][1],dt[0][2],dt[1][0],dt[1][1]);
 	var monthsArr = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-	return (dt.getHours()) + ":"	+ ("0" + dt.getMinutes()).slice(-2) + ", " + dt.getDate() + " " + monthsArr[dt.getMonth()-1] + " " + dt.getFullYear();
-	//return dt;
-
+	return dt.getHours() + ":"	+ ("0" + dt.getMinutes()).slice(-2) + ", " + dt.getDate() + " " + monthsArr[dt.getMonth()-1] + " " + dt.getFullYear();
 }
 
 function getRequiredData()
 {		
-			var arr = Object.keys(theData).map(function ( key ) { return theData[key]['g_intread']; });
+	var arr = Object.keys(theData).map(function ( key ) { return theData[key]['g_intread']; });
 
-			var min = Math.min.apply( null, arr );
-			var max = Math.max.apply( null, arr );
-			var latestIntTempVal = roundToTwo(theData[theData.length-1]['g_intread'],true);
-			var latestExtTempVal = theData[theData.length-1]['g_extread'];
-			var goingUp = (theData[theData.length-1]['g_intread'] > theData[theData.length-2]['g_intread']) ? "up" : "down";
+	var min = Math.min.apply( null, arr );
+	var max = Math.max.apply( null, arr );
+	var latestIntTempVal = roundToTwo(theData[theData.length-1]['g_intread'],true);
+	var latestExtTempVal = theData[theData.length-1]['g_extread'];
+	var goingUp = (theData[theData.length-1]['g_intread'] > theData[theData.length-2]['g_intread']) ? "up" : "down";
 
-			placeholders.latestIntTemp.html(latestIntTempVal);
-			placeholders.latestExtTemp.html(latestExtTempVal);
-			placeholders.latestTimeStamp.html(formatPrettyDate(theData[theData.length-1]['g_datetime']));
-			placeholders.lowestIntTemp.text(Math.round(min*100)/100);
-			placeholders.highestIntTemp.text(Math.round(max*100)/100);
-			placeholders.tempDiff.removeClass("up","down").addClass(goingUp);
+	placeholders.latestIntTemp.html(latestIntTempVal);
+	placeholders.latestExtTemp.html(latestExtTempVal);
+	placeholders.latestTimeStamp.html(formatPrettyDate(theData[theData.length-1]['g_datetime']));
+	placeholders.lowestIntTemp.text(Math.round(min*100)/100);
+	placeholders.highestIntTemp.text(Math.round(max*100)/100);
+	placeholders.tempDiff.removeClass("up","down").addClass(goingUp);
 
-			console.log(theData,latestIntTempVal, arr, goingUp);
+	//console.log(theData,latestIntTempVal, arr, goingUp);
 }
 
 (function(w,d,$){
@@ -91,4 +89,3 @@ function getRequiredData()
 		var loader = setInterval(getWeeksData,120000);	//	2 minutes
 	});
 })(window,document,window.jQuery);
-
