@@ -80,12 +80,11 @@ function getRequiredData()
 	placeholders.highestIntTemp.text(Math.round(max*100)/100);
 	placeholders.tempDiff.removeClass("up","down").addClass(goingUp);
 
-	//console.log(theData,latestIntTempVal, arr, goingUp);
+	doLineChart(theData);
 }
 
-(function(w,d,$){
-	$(function() {
-		getWeeksData();
-		var loader = setInterval(getWeeksData,120000);	//	2 minutes
-	});
-})(window,document,window.jQuery);
+
+$(function() {
+	getWeeksData();
+	var loader = setInterval(getWeeksData,120000);	//	2 minutes
+});

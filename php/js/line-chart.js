@@ -34,11 +34,16 @@ var svg = d3.select(".six-hour-chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var data = theData;
-  data.forEach(function(d) {
-    d.g_datetime = parseDate(d.g_datetime);
-    d.g_intread = +d.g_intread;
-  });
+function doLineChart(data) {
+console.log(data);
+  
+    data.forEach(function(d) {
+      d.g_datetime = parseDate(d.g_datetime);
+      d.g_intread = +d.g_intread;
+
+    });
+
+  
 
 
 
@@ -90,3 +95,5 @@ y.domain([-10,30]);
       .datum(data)
       .attr("class", "line2")
       .attr("d", extLine);
+
+}
